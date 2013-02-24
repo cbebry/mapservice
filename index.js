@@ -1,5 +1,12 @@
 var Hapi = require('hapi');
-var ourDB = require('./config/development');
+var orm = require ('orm');
+var devconfig = require('./config/development').config;
+
+var dbtype = devconfig.type;
+var dbhostname = devconfig.hostname;
+var dbport = devconfig.port;
+var dbuser = devconfig.user;
+var dbpassword = devconfig.password;
 
 // Create a server with a host and port
 var server = new Hapi.Server('0.0.0.0', 8000);
@@ -7,14 +14,12 @@ var server = new Hapi.Server('0.0.0.0', 8000);
 // Define the route
 var hello = {
     handler: function (request) {
-
         request.reply({ greeting: 'hello world' });
     }
 };
 var test = {
     handler: function (request) {
-        var dbname = ourDB.config.db;
-        request.reply({result: dbname});
+        request.reply({result: "test"});
     }
 };
 // Add the route
