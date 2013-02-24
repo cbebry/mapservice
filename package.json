@@ -1,0 +1,27 @@
+{
+  "name": "mapservice",
+  "version": "0.0.0",
+  "description": "mapservice ==========",
+  "main": "index.js",
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.22x"
+  }.
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StevenEBarbaro/mapservice.git"
+  },
+  "author": "",
+  "license": "Banana",
+  "readmeFilename": "README.md",
+  "gitHead": "d9b33cdba16273341bf8f2be7b1c7766b5d24aa8",
+  "dependencies": {
+    "hapi": "~0.14.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  }
+}
