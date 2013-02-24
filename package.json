@@ -5,8 +5,8 @@
   "main": "index.js",
   "engines": {
     "node": "0.8.x",
-    "npm":  "1.2.x"
-  }.
+    "npm": "1.2.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,8 @@
   "readmeFilename": "README.md",
   "gitHead": "d9b33cdba16273341bf8f2be7b1c7766b5d24aa8",
   "dependencies": {
-    "hapi": "~0.14.1"
+    "hapi": "~0.14.1",
+    "orm": "~2.0.2"
   },
   "devDependencies": {
     "mocha": "~1.8.1"
