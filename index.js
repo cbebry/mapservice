@@ -1,17 +1,7 @@
-var Hapi = require('hapi');
-var orm = require ('orm');
-var devconfig = require('./config/development').config;
+var Hapi = require('hapi'),
+    server = new Hapi.Server('0.0.0.0', 8000 /*, { timeout: { socket: 5000, client: 4000, server: 4000 } }*/);
 
-var dbtype = devconfig.type;
-var dbhostname = devconfig.hostname;
-var dbport = devconfig.port;
-var dbuser = devconfig.user;
-var dbpassword = devconfig.password;
-
-// Create a server with a host and port
-var server = new Hapi.Server('0.0.0.0', 8000);
-
-// Define the route
+// Define the routes
 var hello = {
     handler: function (request) {
         request.reply({ greeting: 'hello world' });
@@ -22,9 +12,21 @@ var test = {
         request.reply({result: "test"});
     }
 };
-// Add the route
+
+var TileController = require('./app/controllers/tile.controller');
+// Add the routes
 server.route({ method: 'GET', path: '/hello', config: hello });
 server.route({ method: 'GET', path: '/test', config: test });
+server.route({ method: 'POST', path: '/tiles/add', config: TileController.add() });
+server.route({ method: 'GET', path: '/tiles/up', config: TileController.up("testparam") });
+
+
+//Tail events are used for anything that requires long running async work
+server.on('tail', function (request) {
+    //console.log('tail event fired');
+});
 
 // Start the server
 server.start();
+
+console.log("Server up");
