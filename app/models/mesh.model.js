@@ -5,9 +5,9 @@
 //}
 
 // hasMany MeshVertex & MeshVertexIndex
-module.exportsi.Mesh = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     return sequelize.define("Mesh", {
-        id:     DataTypes.STRING
+        //id:     DataTypes.STRING
     });
 };
 

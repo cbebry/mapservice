@@ -1,8 +1,8 @@
 
 // belongsTo Mesh
-module.exportsi.MeshVertexIndex = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
 	return sequelize.define("MeshVertexIndex", {
-		id:     DataTypes.STRING,
+		//id:     DataTypes.STRING,
 		data:   DataTypes.INTEGER,
 		index:  DataTypes.INTEGER
 	});
