@@ -21,7 +21,10 @@
   "dependencies": {
     "hapi": "~0.14.1",
     "sequelize": "~1.6.0-beta4",
-    "mysql": "~2.0.0-alpha7"
+    "mysql": "~2.0.0-alpha7",
+    "mu2": "~0.5.17",
+    "handlebars": "~1.0.10",
+    "forever-monitor": "~1.1.0"
   },
   "devDependencies": {
     "mocha": "~1.8.1"
