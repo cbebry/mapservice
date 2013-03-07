@@ -2,7 +2,6 @@
 // belongsTo Mesh
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define("MeshVertexIndex", {
-		//id:     DataTypes.STRING,
 		data:   DataTypes.INTEGER,
 		index:  DataTypes.INTEGER
 	});

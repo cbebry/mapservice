@@ -2,8 +2,9 @@
 // belongsTo Mesh
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define("MeshVertex", {
-    		//id:     DataTypes.STRING,
-        	data:   DataTypes.FLOAT,
+        	x:   DataTypes.FLOAT,
+        	y:   DataTypes.FLOAT,
+        	z:   DataTypes.FLOAT,
 	        index:  DataTypes.INTEGER
 	});
 };
