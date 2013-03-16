@@ -19,12 +19,12 @@
   "readmeFilename": "README.md",
   "gitHead": "d9b33cdba16273341bf8f2be7b1c7766b5d24aa8",
   "dependencies": {
-    "hapi": "~0.14.1",
+    "hapi": "~0.14.2",
     "sequelize": "~1.6.0-beta4",
     "mysql": "~2.0.0-alpha7",
-    "mu2": "~0.5.17",
     "handlebars": "~1.0.10",
-    "forever-monitor": "~1.1.0"
+    "forever-monitor": "~1.1.0",
+    "forever": "~0.10.0"
   },
   "devDependencies": {
     "mocha": "~1.8.1"
