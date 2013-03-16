@@ -1,5 +1,5 @@
 /*
-  Rename this file to config.js and update
+  Rename this file to development.js and update
   the following configuration:
 */
 

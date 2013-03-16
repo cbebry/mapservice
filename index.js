@@ -1,5 +1,13 @@
 var Hapi = require('hapi'),
-    server = new Hapi.Server('0.0.0.0', 8000 /*, { timeout: { socket: 5000, client: 4000, server: 4000 } }*/);
+	options = {
+		views: {
+			path: __dirname + '/app/views',
+			engine: {
+				module: 'handlebars'
+			}
+		}
+	},
+    server = new Hapi.Server('0.0.0.0', 8000, options);
 
 // Define the routes
 var hello = {

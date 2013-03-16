@@ -10,7 +10,7 @@ exports.view = function(params) {
 			//	return function(data) { request.reply(data.toString()); }
 			//}
 			
-			request.reply("temporary until view templating is in");
+			request.reply.view("home/home.html", {greeting: 'hello world' }).send();
 			//mu.compileAndRender('home.mustache', {'welcome': 'Welcome!'}).on('data', theReturn(request));
 		}
 	};
