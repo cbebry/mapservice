@@ -12,5 +12,7 @@ logs
 results
 node_modules
 
+config/database.js
 config/development.js
+config/config.js
 npm-debug.log

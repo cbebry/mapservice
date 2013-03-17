@@ -7,7 +7,8 @@ var Hapi = require('hapi'),
 			}
 		}
 	},
-    server = new Hapi.Server('0.0.0.0', 8000, options);
+    serverConfig = require('./config/config'),
+    server = new Hapi.Server(serverConfig.config.hostname, serverConfig.config.port, options);
 
 // Define the routes
 var hello = {

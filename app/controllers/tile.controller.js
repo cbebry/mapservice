@@ -1,11 +1,10 @@
 exports.up = function(params) {
     //console.log(params);
     return {
-        handler: function(request) {
-            //var tailConnect = request.addTail('tile.connect.up');    
+        handler: function(request) {  
             console.log("Inside tile.controller.js::up");
             
-            var devconfig = require('../../config/development').config;
+            var devconfig = require('../../config/database').config;
 
             var dbname = devconfig.db;
             var dbhostname = devconfig.hostname;

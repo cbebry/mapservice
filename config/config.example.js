@@ -1,13 +1,12 @@
 /*
-  Rename this file to development.js and update
+  Use this file as a template for configuring the 
+  HTTP server aspect of the application.
+
+  Rename this file to config.js and update
   the following configuration:
 */
 
 exports.config = {
-  type: 'mysql',
-  hostname: 'localhost',
-  port: 3306,
-  db: 'mydbname',
-  user: 'dbuser',
-  password: 'dbpass'
+  hostname: '0.0.0.0',
+  port: 8000
 };
