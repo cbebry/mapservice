@@ -1,2 +1,4 @@
 pids/**
 logs/**
+.c9revisions
+.settings
