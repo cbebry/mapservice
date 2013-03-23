@@ -1,6 +1,7 @@
 test:
 	./node_modules/.bin/mocha \
-		--reporter list
+		$(find test -name '*.js') \
+        --reporter list
 install:
 	npm install .
 .PHONY: test

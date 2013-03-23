@@ -1,8 +1,8 @@
 var assert = require("assert");
 
-describe('Test', function() {
-    describe('behavior', function() {
-        it('should run tests other than this file.', function() {
+describe('Tile', function() {
+    describe('.add()', function() {
+        it('should create a Tile object with the required children objects.', function() {
             //TODO:
             // require Tile model file
             // create the Tile object
