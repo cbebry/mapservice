@@ -6,10 +6,11 @@ exports.update = function(params) {
 			
 			var sys = require('sys')
 			var exec = require('child_process').exec;
-			function puts(error, stdout, stderr) { sys.puts(stdout) }
-			exec("git pull --all", puts);
 			
-			request.reply.view("home/home.html", {greeting: 'Update complete' }).send();
+			exec("git pull --all", function (error, stdout, stderr) {
+				sys.puts(stdout);
+				request.reply.view("home/home.html", {greeting: 'Update complete' }).send();
+			});
 		}
 	};
 };
