@@ -9,7 +9,7 @@ exports.update = function(params) {
 			
 			exec("git pull --all", function (error, stdout, stderr) {
 				sys.puts(stdout);
-				request.reply.view("home/home.html", {greeting: 'Update complete' }).send();
+				request.reply.view("home/home.html", {greeting: stdout }).send();
 			});
 		}
 	};
