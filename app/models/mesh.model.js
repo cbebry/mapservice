@@ -3,12 +3,19 @@
 //	vertices:[<Float32 in local coordinates around center origin>],
 //	vIndices:[<integer indices>]
 //}
-
 // hasMany MeshVertex & MeshVertexIndex
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define("Mesh", {
+    var Mesh = sequelize.define("Mesh", {
         //id:     DataTypes.STRING
+    }, {
+        freezeTableName: true
     });
+    //var MeshVertex = sequelize.import(__dirname + "/mesh.vertex.model");
+    //var MeshVertexIndex = sequelize.import(__dirname + "/mesh.vertexIndex.model");
+    //Mesh.hasMany(MeshVertex);
+    //Mesh.hasMany(MeshVertexIndex);
+    
+    return Mesh;
 };
 
 // hasMany vertices & vIndices
