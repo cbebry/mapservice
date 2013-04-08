@@ -24,7 +24,8 @@
     "mysql": "~2.0.0-alpha7",
     "handlebars": "~1.0.10",
     "forever-monitor": "~1.1.0",
-    "forever": "~0.10.0"
+    "forever": "~0.10.0",
+    "async": "~0.2.6"
   },
   "devDependencies": {
     "mocha": "~1.8.2"
