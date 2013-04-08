@@ -1,3 +1,5 @@
+//Currently defunct. Don't re-enable this for now.
+//Probably will end up using a tool like Capistrano instead.
 exports.update = function(params) {
 
 	return {

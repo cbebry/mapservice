@@ -26,7 +26,6 @@ var UtilController = require('./app/controllers/util.controller');
 
 server.route({ method: 'GET', path: '/{path*}', handler: { directory: { path: './public/', listing: true } } });
 
-server.route({ method: 'GET', path: '/update', config: UtilController.update() });
 server.route({ method: 'GET', path: '/test', config: test });
 server.route({ method: 'GET', path: '/', config: HomeController.view() });
 server.route({ method: 'POST', path: '/tiles/add', config: TileController.add() });
