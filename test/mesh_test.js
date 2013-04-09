@@ -34,9 +34,9 @@ describe('Mesh', function() {
             }
             
             
-            async.parallel({
-                relate_mesh_to_meshVertex: testRelateMeshWithMeshVertex
-            }, callback);
+            //async.parallel({
+            //    relate_mesh_to_meshVertex: testRelateMeshWithMeshVertex
+            //}, callback);
         });
     });
 });

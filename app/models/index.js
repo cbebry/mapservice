@@ -1,4 +1,7 @@
 var Sequelize = require('sequelize');
+
+console.log("process.env.NODE_ENV: [" + process.env.NODE_ENV + "]");
+
 var devconfig = require('../../config/database').config;
 
 var dbname = devconfig.db;
