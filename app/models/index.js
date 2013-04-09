@@ -7,7 +7,7 @@ switch (process.env.NODE_ENV) {
     case 'test_travis':
         database_config_to_use = '../../config/database.test_travis';
         break;
-    case 'undefined':
+    case undefined:
     case 'production':
     case 'development':
         database_config_to_use = '../../config/database';

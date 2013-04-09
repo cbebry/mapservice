@@ -13,29 +13,29 @@ describe('Mesh', function() {
             
             // create instance of the object
             // assert() some things about the instantiation's associations
-            var testRelateMeshWithMeshVertex = function () {
-                Mesh.create({ /* */ }).success(function(mesh) {
-                    MeshVertex.create({ /* */ }).success(function(meshVertex) {
-                        mesh.hasMeshVertex(meshVertex).success(function(result) {
-                            // result would be false
-                            console.log("result1:" + result);
-                            assert(result == false);
-                            mesh.addMeshVertex(meshVertex).success(function() {
-                                mesh.hasMeshVertex(meshVertex).success(function(result) {
-                                    // result would be true
-                                    console.log("result2:" + result);
-                                    assert(result == true);
-                                    done();
-                                });
+            //var testRelateMeshWithMeshVertex = function () {
+            Mesh.create({ /* */ }).success(function(mesh) {
+                MeshVertex.create({ /* */ }).success(function(meshVertex) {
+                    mesh.hasMeshVertex(meshVertex).success(function(result) {
+                        // result would be false
+                        console.log("result1:" + result);
+                        assert(result == false);
+                        mesh.addMeshVertex(meshVertex).success(function() {
+                            mesh.hasMeshVertex(meshVertex).success(function(result) {
+                                // result would be true
+                                console.log("result2:" + result);
+                                assert(result == true);
+                                done();
                             });
                         });
                     });
                 });
-            }
-            
+            });
+            //};
             
             //async.parallel({
-            //    relate_mesh_to_meshVertex: testRelateMeshWithMeshVertex
+            //    relate_mesh_to_meshVertex: testRelateMeshWithMeshVertex,
+            //    
             //}, callback);
         });
     });
