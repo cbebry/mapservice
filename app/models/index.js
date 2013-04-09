@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-console.log("process.env.NODE_ENV: [" + process.env.NODE_ENV + "]");
+//console.log("process.env.NODE_ENV: [" + process.env.NODE_ENV + "]");
 
 var database_config_to_use = '';
 switch (process.env.NODE_ENV) {
@@ -45,18 +45,27 @@ models.forEach(function(model) {
 });
 
 
-(function (model) {
-    //define associations
-    model.Mesh.hasMany(model.MeshVertex);
-    model.Mesh.hasMany(model.MeshVertexIndex);
-    model.MeshVertex.belongsTo(model.Mesh);
-    model.MeshVertexIndex.belongsTo(model.Mesh);
-    
-    //ensure tables are created
-    model.Mesh.sync();
-    model.MeshVertex.sync();
-    model.MeshVertexIndex.sync();
-})(module.exports);
+module.exports.init = function(done) {
+    (function(model) {
+        //define associations
+        model.Mesh.hasMany(model.MeshVertex);
+        model.Mesh.hasMany(model.MeshVertexIndex);
+        model.MeshVertex.belongsTo(model.Mesh);
+        model.MeshVertexIndex.belongsTo(model.Mesh);
+        
+        //ensure tables are created
+        model.Mesh.sync().success(function() {
+            model.MeshVertex.sync().success(function() {
+                model.MeshVertexIndex.sync().success(function() {
+                    //callback
+                    done();
+                }).error(function(error) { /*handle this?*/ });
+            }).error(function(error) { /*handle this?*/ });
+        }).error(function(error) { /*handle this?*/ });
+        
+    })(module.exports);
+};
+
 
 //export the connection
 module.exports.sequelize = sequelize;
