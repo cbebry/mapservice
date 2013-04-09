@@ -19,7 +19,7 @@ var test = {
 
 var TileController = require('./app/controllers/tile.controller');
 var HomeController = require('./app/controllers/home.controller');
-var UtilController = require('./app/controllers/util.controller');
+//var UtilController = require('./app/controllers/util.controller');
 
 
 // Add the routes

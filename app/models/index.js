@@ -1,5 +1,19 @@
 var Sequelize = require('sequelize');
-var devconfig = require('../../config/database').config;
+
+//console.log("process.env.NODE_ENV: [" + process.env.NODE_ENV + "]");
+
+var database_config_to_use = '';
+switch (process.env.NODE_ENV) {
+    case 'test_travis':
+        database_config_to_use = '../../config/database.test_travis';
+        break;
+    case undefined:
+    case 'production':
+    case 'development':
+        database_config_to_use = '../../config/database';
+        break;
+}
+var devconfig = require(database_config_to_use).config;
 
 var dbname = devconfig.db;
 var dbhostname = devconfig.hostname;
@@ -31,18 +45,27 @@ models.forEach(function(model) {
 });
 
 
-(function (model) {
-    //define associations
-    model.Mesh.hasMany(model.MeshVertex);
-    model.Mesh.hasMany(model.MeshVertexIndex);
-    model.MeshVertex.belongsTo(model.Mesh);
-    model.MeshVertexIndex.belongsTo(model.Mesh);
-    
-    //ensure tables are created
-    model.Mesh.sync();
-    model.MeshVertex.sync();
-    model.MeshVertexIndex.sync();
-})(module.exports);
+module.exports.init = function(done) {
+    (function(model) {
+        //define associations
+        model.Mesh.hasMany(model.MeshVertex);
+        model.Mesh.hasMany(model.MeshVertexIndex);
+        model.MeshVertex.belongsTo(model.Mesh);
+        model.MeshVertexIndex.belongsTo(model.Mesh);
+        
+        //ensure tables are created
+        model.Mesh.sync().success(function() {
+            model.MeshVertex.sync().success(function() {
+                model.MeshVertexIndex.sync().success(function() {
+                    //callback
+                    done();
+                }).error(function(error) { /*handle this?*/ });
+            }).error(function(error) { /*handle this?*/ });
+        }).error(function(error) { /*handle this?*/ });
+        
+    })(module.exports);
+};
+
 
 //export the connection
 module.exports.sequelize = sequelize;
