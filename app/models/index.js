@@ -2,7 +2,18 @@ var Sequelize = require('sequelize');
 
 console.log("process.env.NODE_ENV: [" + process.env.NODE_ENV + "]");
 
-var devconfig = require('../../config/database').config;
+var database_config_to_use = '';
+switch (process.env.NODE_ENV) {
+    case 'test_travis':
+        database_config_to_use = '../../config/database.test_travis';
+        break;
+    case 'undefined':
+    case 'production':
+    case 'development':
+        database_config_to_use = '../../config/database';
+        break;
+}
+var devconfig = require(database_config_to_use).config;
 
 var dbname = devconfig.db;
 var dbhostname = devconfig.hostname;
