@@ -38,9 +38,42 @@ exports.up = function(params) {
     };
 };
 
-exports.add = function() {
+exports.add = function(params) {
+    //expect some properties of the new tile in params
     return {
         handler: function(request) {
+            //stub
+            request.reply("tile.controller.add");
+        }
+    };
+};
+
+exports.get = function(params) {
+    //expect some params.id for getting by primary key
+    return {
+        handler: function(request) {
+            //stub
+            request.reply("tile.controller.add");
+        }
+    };
+};
+
+exports.update = function(params) {
+    //expect an existing primary key from params.id, and properties of the
+    //  existing tile
+    return {
+        handler: function(request) {
+            //stub
+            request.reply("tile.controller.add");
+        }
+    };
+};
+
+exports.delete = function(params) {
+    //expect an existing primary key from params.id
+    return {
+        handler: function(request) {
+            //stub
             request.reply("tile.controller.add");
         }
     };
