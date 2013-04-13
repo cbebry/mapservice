@@ -1,6 +1,5 @@
 var assert = require('assert');
 var async = require('async');
-//var Sequelize = require("sequelize");
 
 describe('Mesh', function() {
     describe('{associations}', function() {
@@ -8,38 +7,68 @@ describe('Mesh', function() {
             // require Associated model files
             var models = require(__dirname + "/../app/models/");
             models.init(function() {
-                var Mesh = models.Mesh;
-                var MeshVertex = models.MeshVertex;
-                var MeshVertexIndex = models.MeshVertexIndex;
+                // steps:
+                // ------
+                // create instances of the objects
+                // assign association
+                // assert() some expectations about the associations
+                // finish by calling parallelCallback
+                // done() to end the test
                 
-                // create instance of the object
-                // assert() some things about the instantiation's associations
-                //var testRelateMeshWithMeshVertex = function () {
-                Mesh.create({ /* */ }).success(function(mesh) {
-                    MeshVertex.create({ /* */ }).success(function(meshVertex) {
-                        mesh.hasMeshVertex(meshVertex).success(function(result) {
-                            // result would be false
-                            console.log("result1:" + result);
-                            assert(result == false);
-                            mesh.addMeshVertex(meshVertex).success(function() {
-                                mesh.hasMeshVertex(meshVertex).success(function(result) {
-                                    // result would be true
-                                    console.log("result2:" + result);
-                                    assert(result == true);
-                                    done();
+                var A_Mesh = models.Mesh;
+                var A_MeshVertex = models.MeshVertex;
+
+                var testMeshHasRelationshipsWithMeshVertex = function(parallelCallback) {
+                    A_Mesh.create({ /* */ }).success(function(mesh) {
+                        A_MeshVertex.create({ /* */ }).success(function(meshVertex) {
+                            mesh.hasMeshVertex(meshVertex).success(function(result1) {
+                                console.log("result1:" + result1);
+                                assert(result1 == false);
+                                mesh.addMeshVertex(meshVertex).success(function() {
+                                    mesh.hasMeshVertex(meshVertex).success(function(result2) {
+                                        console.log("result2:" + result2);
+                                        assert(result2 == true);
+
+                                        parallelCallback(null, result1+","+result2);
+                                    });
                                 });
                             });
                         });
                     });
+                };
+                
+                var B_Mesh = models.Mesh;
+                var B_MeshVertexIndex = models.MeshVertexIndex;
+                
+                var testMeshHasRelationshipsWithMeshVertexIndex = function(parallelCallback) {
+                    B_Mesh.create({ /* */ }).success(function(mesh) {
+                        B_MeshVertexIndex.create({ /* */ }).success(function(meshVertexIndex) {
+                            mesh.hasMeshVertexIndex(meshVertexIndex).success(function(result1) {
+                                console.log("result1:" + result1);
+                                assert(result1 == false);
+                                mesh.addMeshVertexIndex(meshVertexIndex).success(function() {
+                                    mesh.hasMeshVertexIndex(meshVertexIndex).success(function(result2) {
+                                        console.log("result2:" + result2);
+                                        assert(result2 == true);
+
+                                        parallelCallback(null, result1+","+result2);
+                                    });
+                                });
+                            });
+                        });
+                    });
+                };
+                
+                //Run tests and finish when all are done.
+                async.parallel({
+                    one: testMeshHasRelationshipsWithMeshVertex,
+                    two: testMeshHasRelationshipsWithMeshVertexIndex
+                },
+                function(err, results) {
+                    done();
                 });
+                
             });
-            
-            //};
-            
-            //async.parallel({
-            //    relate_mesh_to_meshVertex: testRelateMeshWithMeshVertex,
-            //    
-            //}, callback);
         });
     });
 });
