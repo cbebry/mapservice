@@ -1,5 +1,5 @@
 exports.up = function(params) {
-    //console.log(params);
+    //TODO: use ../models/index.js instead of this stated approach.
     return {
         handler: function(request) {  
             console.log("Inside tile.controller.js::up");
@@ -53,7 +53,7 @@ exports.get = function(params) {
     return {
         handler: function(request) {
             //stub
-            request.reply("tile.controller.add");
+            request.reply("tile.controller.get");
         }
     };
 };
@@ -64,7 +64,7 @@ exports.update = function(params) {
     return {
         handler: function(request) {
             //stub
-            request.reply("tile.controller.add");
+            request.reply("tile.controller.update");
         }
     };
 };
@@ -74,7 +74,7 @@ exports.delete = function(params) {
     return {
         handler: function(request) {
             //stub
-            request.reply("tile.controller.add");
+            request.reply("tile.controller.delete");
         }
     };
 };

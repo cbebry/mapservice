@@ -3,7 +3,7 @@ var async = require('async');
 
 describe('Mesh', function() {
     describe('{associations}', function() {
-        it('should belong to a Tile, and have a one-to-many relationship with both MeshVertex and MeshVertexIndex.', function(done) {
+        it('should have a one-to-many relationship with both MeshVertex and MeshVertexIndex.', function(done) {
             // require Associated model files
             var models = require(__dirname + "/../app/models/");
             models.init(function() {

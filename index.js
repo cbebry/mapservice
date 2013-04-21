@@ -29,7 +29,7 @@ server.route({ method: 'GET', path: '/{path*}', handler: { directory: { path: '.
 server.route({ method: 'GET', path: '/test', config: test });
 server.route({ method: 'GET', path: '/', config: HomeController.view() });
 server.route({ method: 'POST', path: '/tiles/add', config: TileController.add() });
-server.route({ method: 'GET', path: '/tiles/up', config: TileController.up("testparam") });
+//server.route({ method: 'GET', path: '/tiles/up', config: TileController.up("testparam") });
 
 // Start the server
 server.start();
